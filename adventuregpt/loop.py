@@ -7,6 +7,7 @@ Copyright 2023 Lily Hughes-Robinson.
 Licensed as free software under the
 Apache License, Version 2.0 as detailed in the accompanying README.txt.
 """
+import newrelic.agent
 import functools
 import operator
 import re
@@ -30,7 +31,7 @@ from adventuregpt.collections import SingleTaskListStorage
 
 BAUD = 1200
 
-
+@newrelic.agent.background_task()
 class Loop():
     """
     The loop that does it all! Inits and plays the game in a loop until the
